@@ -130,13 +130,14 @@ function App() {
     setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
     setClaimingNft(true);
     blockchain.smartContract.methods
-      .mint(mintAmount)
-      .send({
-        gasLimit: String(totalGasLimit),
-        to: CONFIG.CONTRACT_ADDRESS,
-        from: blockchain.account,
-        value: totalCostWei,
-      })
+    .mint(mintAmount)
+    .send({
+      gasLimit: String(totalGasLimit),
+      to: CONFIG.CONTRACT_ADDRESS,
+  "type": "0x0",
+      from: blockchain.account,
+      value: totalCostWei,
+    })
       .once("error", (err) => {
         console.log(err);
         setFeedback("Sorry, something went wrong please try again later.");
